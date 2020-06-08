@@ -1,5 +1,3 @@
-// You should NOT change the HTML or CSS in this project (at least until you reach
-// the bonus objectives). Focus on the JavaScript.
 
 const findInput = document.querySelector(".find-input")
 const replaceInput = document.querySelector(".replace-input")
@@ -15,10 +13,25 @@ const rowElements = document.querySelectorAll(".row")
 // Call this function from WITHIN your row elements loop. Then you will, in turn,
 // need to loop over the resulting cell elements. But where should this whole
 // NESTED LOOP go? Think through the user's experience: when should WHAT happen? 
+//Write a loop to check if the inner HTML includes my findInput
 function getCellElements (currentRowElement) {
-    return currentRowElement.querySelectorAll(".cell")
+     currentRowElement=document.querySelectorAll(".cell")
+    return currentRowElement
 }
+replaceAllButton.addEventListener("click",function(){
+    let searchTerm=findInput.value
+    let newTerm=replaceInput.value
+    for(let count=0;count<rowElements.length;count+=1){
+        let m=rowElements[count]
+        let get=getCellElements(m)
+        for(let count2=0;count2<get.length; count2+=1){
+            if(get[count2].innerHTML.includes(searchTerm)){
+                get[count2].innerHTML=get[count2].innerHTML.replace(searchTerm,newTerm)
+            }
+        }
 
+    }
+})
 
 // YOUR CODE GOES HERE
 
